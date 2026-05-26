@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>EE Unidade Polo | Escola Estadual de Excelência</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Public Sans', 'Inter', sans-serif;
+            background-color: #fbfdfe;
+            color: #1e2f3e;
+            scroll-behavior: smooth;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        :root {
+            --primary-dark: #0a3b2f;
+            --primary-medium: #1e6f5c;
+            --primary-light: #eef7f3;
+            --accent-gold: #c9a03d;
+            --gray-bg: #f4f8fa;
+            --text-dark: #1e2a36;
+            --text-muted: #4a6272;
+        }
+
+        h1, h2, h3, .logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 70px;
+            height: 3px;
+            background: var(--accent-gold);
+            border-radius: 3px;
+        }
+        
+        .text-center .section-title:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .top-bar {
+            background: var(--primary-dark);
+            color: #e0f2e9;
+            padding: 10px 0;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .top-bar .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .top-bar i {
+            margin-right: 6px;
+            color: var(--accent-gold);
+        }
+        
+        .navbar {
+            background: white;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e2ece8;
+        }
+        
+        .nav-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 32px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+        }
+        
+        .logo span {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: var(--primary-medium);
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: #2c4c5e;
+            transition: 0.2s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+        
+        .btn-matricula {
+            background: var(--primary-medium);
+            color: white !important;
+            padding: 8px 24px;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+        
+        .btn-matricula:hover {
+            background: var(--primary-dark);
+            color: white !important;
+        }
+        
+        .hero {
+            background: linear-gradient(110deg, #eef7f3 0%, #ffffff 80%);
+            padding: 70px 0 60px;
+        }
+        
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-badge {
+            background: var(--primary-light);
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary-medium);
+            margin-bottom: 1.2rem;
+        }
+        
+        .hero-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .hero-content p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1.8rem;
+            max-width: 90%;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-medium);
+        }
+        
+        .hero-img {
+            flex: 1;
+            background: #cbdcd4;
+            border-radius: 32px;
+            height: 320px;
+            background-image: linear-gradient(125deg, #bdd3c9, #e2ece6), url('https://placehold.co/700x450/eef7f3/1e6f5c?text=EE+Unidade+Polo');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        
+        .cursos {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .section-sub {
+            color: var(--text-muted);
+            max-width: 650px;
+            margin: 0.5rem auto 2rem;
+        }
+        
+        .cursos-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        
+        .curso-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            width: 260px;
+            transition: 0.2s;
+            border: 1px solid #e2ece8;
+            text-align: center;
+        }
+        
+        .curso-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.05);
+        }
+        
+        .curso-icon {
+            font-size: 2.2rem;
+            color: var(--primary-medium);
+            margin-bottom: 1rem;
+        }
+        
+        .curso-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .filters-school {
+            background: var(--gray-bg);
+            padding: 50px 0;
+            border-top: 1px solid #dce9e2;
+            border-bottom: 1px solid #dce9e2;
+        }
+        
+        .filters-container {
+            background: white;
+            border-radius: 48px;
+            padding: 2rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+        }
+        
+        .filter-item {
+            display: flex;
+            flex-direction: column;
+            min-width: 160px;
+        }
+        
+        .filter-item label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary-dark);
+            margin-bottom: 5px;
+        }
+        
+        .filter-item select, .filter-item input {
+            padding: 10px 14px;
+            border-radius: 40px;
+            border: 1px solid #cfdfd8;
+            background: white;
+        }
+        
+        .btn-simular {
+            background: var(--primary-dark);
+            color: white;
+            border: none;
+            padding: 0 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        /* PORTFÓLIO COM LINK PARA GITHUB */
+        .portfolio-section {
+            padding: 80px 0;
+            background: #ffffff;
+        }
+        
+        .portfolio-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid #eef3ef;
+            padding-bottom: 1rem;
+        }
+        
+        .btn-add-port {
+            background: var(--primary-medium);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        
+        .portfolio-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: flex-start;
+        }
+        
+        .port-card {
+            width: calc(33.333% - 1.4rem);
+            min-width: 280px;
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #e2ece6;
+            transition: 0.25s ease;
+            cursor: pointer;
+        }
+        
+        @media (max-width: 860px) {
+            .port-card { width: calc(50% - 1rem); }
+        }
+        @media (max-width: 580px) {
+            .port-card { width: 100%; }
+        }
+        
+        .port-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 28px -12px rgba(0,0,0,0.1);
+            border-color: #cbdcd4;
+        }
+        
+        .port-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .port-info {
+            padding: 1.5rem;
+        }
+        
+        .port-tag {
+            background: var(--primary-light);
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .port-info h4 {
+            font-size: 1.25rem;
+            margin: 12px 0 8px;
+            font-weight: 700;
+        }
+        
+        .port-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+        
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-medium);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 8px;
+            padding: 6px 12px;
+            background: #f0f7f4;
+            border-radius: 40px;
+            transition: 0.2s;
+        }
+        
+        .github-link:hover {
+            background: var(--primary-medium);
+            color: white;
+        }
+        
+        .port-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .delete-port {
+            background: none;
+            border: none;
+            color: #b68b40;
+            font-size: 0.8rem;
+            cursor: pointer;
+            padding: 6px 10px;
+            border-radius: 30px;
+            transition: 0.2s;
+        }
+        
+        .delete-port:hover {
+            background: #fee8dd;
+        }
+        
+        .empty-portfolio {
+            background: #f6fbf8;
+            border-radius: 48px;
+            padding: 3rem;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .matricula-area {
+            background: var(--primary-dark);
+            color: #eff5f2;
+            padding: 70px 0;
+            text-align: center;
+        }
+        
+        .matricula-cards {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .matricula-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 2rem;
+            width: 280px;
+            border: 1px solid rgba(201,160,61,0.3);
+        }
+        
+        .btn-outline-light {
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            padding: 10px 24px;
+            border-radius: 40px;
+            color: var(--accent-gold);
+            font-weight: 500;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+        
+        footer {
+            background: #0b2c24;
+            color: #cfe6df;
+            padding: 50px 0 25px;
+        }
+        
+        @media (max-width: 760px) {
+            .container { padding: 0 24px; }
+            .hero-content h2 { font-size: 2.2rem; }
+            .nav-flex { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="container">
+        <span><i class="fas fa-graduation-cap"></i> Secretaria Escolar: (11) 4002-8922</span>
+        <span><i class="fas fa-clock"></i> Horário: 7h às 17h (segunda a sexta)</span>
+        <span><i class="fas fa-globe"></i> Gestão Democrática</span>
+    </div>
+</div>
+
+<header class="navbar">
+    <div class="nav-flex">
+        <div class="logo">
+            <h1>EE Unidade Polo</h1>
+            <span>Escola Estadual - Ensino Fundamental e Médio</span>
+        </div>
+        <div class="nav-links">
+            <a href="#">Início</a>
+            <a href="#cursos">Modalidades</a>
+            <a href="#portfolio">Portfólio</a>
+            <a href="#matricula" class="btn-matricula">Matrícula 2025</a>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-chalkboard-user"></i> Educação Pública de Qualidade</div>
+                <h2>Construindo futuros com excelência e cidadania</h2>
+                <p>A EE Unidade Polo oferece ensino fundamental, médio e técnico integrado, com formação ética e tecnológica.</p>
+                <div class="hero-stats">
+                    <div><span class="stat-number">+1.800</span><br>alunos ativos</div>
+                    <div><span class="stat-number">98%</span><br>aprovação no ENEM</div>
+                    <div><span class="stat-number">15</span><br>premiações estaduais</div>
+                </div>
+            </div>
+            <div class="hero-img"></div>
+        </div>
+    </section>
+
+    <section id="cursos" class="cursos">
+        <div class="container">
+            <div class="text-center" style="text-align:center;">
+                <h2 class="section-title">Nossas modalidades</h2>
+                <p class="section-sub">Ensino integral, técnico integrado e muito mais</p>
+            </div>
+            <div class="cursos-grid">
+                <div class="curso-card"><div class="curso-icon"><i class="fas fa-book-open"></i></div><h3>Ensino Médio</h3><p>Itinerários formativos</p><span style="font-size:0.7rem; color:var(--primary-medium);">+ ENEM preparatório</span></div>
+                <div class="curso-card"><div class="curso-icon"><i class="fas fa-microchip"></i></div><h3>Técnico em TI</h3><p>Integrado ao Médio</p><span style="font-size:0.7rem;">Inovação e tecnologia</span></div>
+                <div class="curso-card"><div class="curso-icon"><i class="fas fa-flask"></i></div><h3>Ciências da Natureza</h3><p>Laboratórios e pesquisas</p><span style="font-size:0.7rem;">Iniciação científica</span></div>
+                <div class="curso-card"><div class="curso-icon"><i class="fas fa-language"></i></div><h3>Idiomas e Projetos</h3><p>Inglês, Espanhol + intercâmbio</p><span style="font-size:0.7rem;">Certificações</span></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="filters-school">
+        <div class="container">
+            <div style="text-align:center; margin-bottom:1.5rem;">
+                <h2 class="section-title">Escolha sua modalidade e unidade</h2>
+                <p class="section-sub">Encontre o turno e curso ideal para você</p>
+            </div>
+            <div class="filters-container">
+                <div class="filter-item"><label>Modalidade</label><select id="modalidade"><option>Ensino Médio Regular</option><option>Técnico em TI</option><option>Magistério</option></select></div>
+                <div class="filter-item"><label>Turno</label><select id="turno"><option>Manhã</option><option>Tarde</option><option>Integral</option></select></div>
+                <div class="filter-item"><label>Polo/Região</label><input id="regiao" placeholder="Sua cidade ou bairro" value="Centro"></div>
+                <button class="btn-simular" id="simularMatriculaBtn"><i class="fas fa-search"></i> Simular vaga</button>
+            </div>
+            <p id="msgSimulacao" style="text-align:center; margin-top:1.2rem; font-size:0.85rem; color:#3f7868;"></p>
+        </div>
+    </div>
+
+    <!-- PORTFÓLIO COM REDIRECIONAMENTO PARA GITHUB -->
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="portfolio-header">
+                <div>
+                    <h2 class="section-title" style="margin-bottom:0;">Meu Portfólio no GitHub</h2>
+                    <p style="color:#5c7a6a;">Clique em qualquer projeto para acessar o repositório no GitHub 🚀</p>
+                </div>
+                <button id="addPortfolioBtn" class="btn-add-port"><i class="fab fa-github"></i> Adicionar projeto GitHub</button>
+            </div>
+            <div id="portfolioGrid" class="portfolio-grid">
+                <!-- renderizado via JS -->
+            </div>
+        </div>
+    </section>
+
+    <section id="matricula" class="matricula-area">
+        <div class="container">
+            <h2 style="font-size:2rem;">Matrículas 2025</h2>
+            <p>Garanta sua vaga na rede estadual com ensino de excelência</p>
+            <div class="matricula-cards">
+                <div class="matricula-card"><i class="fas fa-edit" style="font-size:2rem; color:#c9a03d;"></i><h3>Pré-matrícula</h3><p>Documentação simplificada e atendimento remoto</p><button class="btn-outline-light" onclick="alert('Pré-matrícula disponível na secretaria da EE Unidade Polo ou via site da SEDUC.')">Solicitar vaga</button></div>
+                <div class="matricula-card"><i class="fas fa-hand-holding-heart"></i><h3>Benefícios</h3><p>Bolsa permanência, material didático e alimentação</p><button class="btn-outline-light" onclick="alert('Alunos da rede estadual têm direito a programa de auxílio. Consulte a coordenação.')">Saiba mais</button></div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem;">
+            <div><h4>EE Unidade Polo</h4><p>Rua das Escolas, 500 - Centro<br> Secretaria de Educação do Estado</p></div>
+            <div><h4>Contato</h4><p>📞 (11) 4002-8922<br>✉️ eepolo@educacao.sp.gov.br</p></div>
+            <div><h4>Funcionamento</h4><p>Segunda a sexta: 7h - 17h<br>Atendimento ao público: 9h - 15h</p></div>
+        </div>
+        <div style="text-align:center; margin-top: 2rem; font-size:0.7rem;">© 2025 Escola Estadual Unidade Polo — Compromisso com a educação pública. Portfólio integrado ao GitHub.</div>
+    </div>
+</footer>
+
+<script>
+    // ========== PORTFÓLIO COM LINK PARA GITHUB ==========
+    const PORT_KEY_EE = "ee_unidade_polo_portfolio_github";
+    let portfolioItems = [];
+
+    function loadPortfolio() {
+        const stored = localStorage.getItem(PORT_KEY_EE);
+        if(stored) {
+            try {
+                const parsed = JSON.parse(stored);
+                if(Array.isArray(parsed) && parsed.length) {
+                    portfolioItems = parsed;
+                } else {
+                    setDefaultPortfolio();
+                }
+            } catch(e) { setDefaultPortfolio(); }
+        } else {
+            setDefaultPortfolio();
+        }
+    }
+
+    // Projetos exemplo com links reais do GitHub (substitua pelos seus)
+    function setDefaultPortfolio() {
+        portfolioItems = [
+            { 
+                id: "ee1", 
+                title: "Sistema de Notas Escolares", 
+                description: "Aplicação web para gestão de notas e frequência dos alunos. Desenvolvido com React e Node.js.",
+                tag: "Desenvolvimento Web", 
+                githubUrl: "https://github.com/seuusuario/sistema-notas-escolares",
+                imgBg: "linear-gradient(135deg, #1e6f5c, #0a3b2f), url('https://placehold.co/600x400/1e6f5c/white?text=Sistema+Escolar')" 
+            },
+            { 
+                id: "ee2", 
+                title: "App de Educação Ambiental", 
+                description: "Aplicativo mobile para conscientização sobre reciclagem e sustentabilidade. Projeto de TCC.",
+                tag: "Mobile", 
+                githubUrl: "https://github.com/seuusuario/educacao-ambiental",
+                imgBg: "linear-gradient(135deg, #c9a03d, #8b6b2c), url('https://placehold.co/600x400/c9a03d/white?text=App+Ambiental')" 
+            },
+            { 
+                id: "ee3", 
+                title: "Portfólio Interativo", 
+                description: "Site pessoal com animações e design responsivo. Projeto desenvolvido em HTML, CSS e JavaScript.",
+                tag: "Front-end", 
+                githubUrl: "https://github.com/seuusuario/portfolio-interativo",
+                imgBg: "linear-gradient(135deg, #2b7a62, #145c4a), url('https://placehold.co/600x400/2b7a62/white?text=Portfolio+Web')" 
+            }
+        ];
+        savePortfolio();
+    }
+
+    function savePortfolio() {
+        localStorage.setItem(PORT_KEY_EE, JSON.stringify(portfolioItems));
+    }
+
+    function generateId() {
+        return 'proj_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+    }
+
+    function renderPortfolio() {
+        const grid = document.getElementById('portfolioGrid');
+        if(!grid) return;
+        if(portfolioItems.length === 0) {
+            grid.innerHTML = `<div class="empty-portfolio"><i class="fab fa-github" style="font-size:3rem; color:#c9a03d;"></i><h3>Seu portfólio está vazio</h3><p>Clique em "Adicionar projeto GitHub" e compartilhe seus repositórios!</p></div>`;
+            return;
+        }
+        
+        grid.innerHTML = portfolioItems.map(item => `
+            <div class="port-card" data-url="${item.githubUrl}" data-id="${item.id}">
+                <div class="port-img" style="background: ${item.imgBg}; background-size: cover; background-position: center;"></div>
+                <div class="port-info">
+                    <span class="port-tag">${escapeHtml(item.tag)}</span>
+                    <h4>${escapeHtml(item.title)}</h4>
+                    <p>${escapeHtml(item.description.length > 95 ? item.description.substring(0,95)+'...' : item.description)}</p>
+                    <div class="port-actions">
+                        <a href="${item.githubUrl}" target="_blank" class="github-link" onclick="event.stopPropagation();">
+                            <i class="fab fa-github"></i> Ver no GitHub
+                        </a>
+                        <button class="delete-port" data-id="${item.id}" onclick="event.stopPropagation();">
+                            <i class="fas fa-trash-alt"></i> Remover
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+        // Adicionar evento de clique em todo o card para abrir o GitHub
+        document.querySelectorAll('.port-card').forEach(card => {
+            const url = card.getAttribute('data-url');
+            if(url && url !== '#') {
+                card.addEventListener('click', (e) => {
+                    // Evitar que o clique no botão de remover ou no link dispare duas vezes
+                    if(e.target.closest('.delete-port') || e.target.closest('.github-link')) {
+                        return;
+                    }
+                    window.open(url, '_blank');
+                });
+            }
+        });
+        
+        // Eventos de deleção
+        document.querySelectorAll('.delete-port').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const id = btn.getAttribute('data-id');
+                removeProject(id);
+            });
+        });
+    }
+
+    function removeProject(id) {
+        portfolioItems = portfolioItems.filter(p => p.id !== id);
+        savePortfolio();
+        renderPortfolio();
+        showToast("Projeto removido do portfólio");
+    }
+
+    function addNewProject() {
+        let title = prompt("Título do projeto (ex: Meu App Incrível):");
+        if(!title || title.trim() === "") return;
+        
+        let description = prompt("Descrição detalhada do seu projeto:");
+        if(!description) return;
+        
+        let tag = prompt("Categoria (ex: React, Python, Mobile, Front-end):", "Destaque");
+        if(!tag) tag = "GitHub Project";
+        
+        let githubUrl = prompt("URL do repositório no GitHub (ex: https://github.com/seuusuario/meu-projeto):", "https://github.com/");
+        if(!githubUrl || githubUrl.trim() === "") {
+            alert("Você precisa fornecer um link do GitHub para o projeto!");
+            return;
+        }
+        
+        // Validar se é uma URL válida
+        if(!githubUrl.startsWith('http')) {
+            githubUrl = 'https://' + githubUrl;
+        }
+        
+        let useDefault = confirm("Usar fundo padrão da escola? (OK para sim)");
+        let bgImg = useDefault ? "linear-gradient(135deg, #1e6f5c, #0e4d3e), url('https://placehold.co/600x400/1e6f5c/white?text=GitHub+Project')" : "linear-gradient(135deg, #5a8f7c, #3d6b5a), url('https://placehold.co/600x400/5a8f7c/white?text=Novo+Repo')";
+        
+        const newItem = {
+            id: generateId(),
+            title: title.trim(),
+            description: description.trim(),
+            tag: tag.trim(),
+            githubUrl: githubUrl.trim(),
+            imgBg: bgImg,
+        };
+        
+        portfolioItems.unshift(newItem);
+        savePortfolio();
+        renderPortfolio();
+        showToast(`✨ "${newItem.title}" adicionado ao portfólio! Clique para abrir no GitHub.`);
+    }
+
+    function showToast(msg) {
+        let toast = document.createElement('div');
+        toast.innerText = msg;
+        toast.style.position = 'fixed';
+        toast.style.bottom = '24px';
+        toast.style.right = '24px';
+        toast.style.backgroundColor = '#0a3b2f';
+        toast.style.color = '#f2f6f4';
+        toast.style.padding = '12px 24px';
+        toast.style.borderRadius = '40px';
+        toast.style.fontSize = '0.85rem';
+        toast.style.zIndex = '999';
+        toast.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2500);
+    }
+
+    function escapeHtml(str) {
+        if(!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if(m === '&') return '&amp;';
+            if(m === '<') return '&lt;';
+            if(m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    // Simulador de matrícula
+    document.getElementById('simularMatriculaBtn')?.addEventListener('click', () => {
+        const modalidade = document.getElementById('modalidade').value;
+        const turno = document.getElementById('turno').value;
+        const regiao = document.getElementById('regiao').value || "sua região";
+        const msg = document.getElementById('msgSimulacao');
+        msg.innerHTML = `<i class="fas fa-check-circle" style="color:#c9a03d;"></i> Simulação: ${modalidade} - turno ${turno} - vaga disponível na região ${regiao}. Procure a secretaria escolar para efetivar sua matrícula.`;
+        msg.style.opacity = "1";
+        setTimeout(() => msg.style.opacity = "0.85", 200);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadPortfolio();
+        renderPortfolio();
+        const addBtn = document.getElementById('addPortfolioBtn');
+        if(addBtn) addBtn.addEventListener('click', addNewProject);
+    });
+</script>
+</body>
+</html>
